@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/books")
@@ -22,17 +23,40 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Book> findAll() {
-        return bookRepository.findAll();
+    public List<BookDto> findAll() {
+        return bookRepository.findAll().stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public Book findBook(@PathVariable Long id) {
-        return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
+    public BookDto findBook(@PathVariable Long id) {
+        return modelMapper.map(bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id)), BookDto.class);
     }
 
     @PostMapping
-    public Book addBook(@Valid @RequestBody BookDto bookDto) {
-        return bookRepository.save(modelMapper.map(bookDto, Book.class));
+    public BookDto addBook(@Valid @RequestBody BookDto bookDto) {
+        return modelMapper.map(bookRepository.save(modelMapper.map(bookDto, Book.class)), BookDto.class);
+    }
+
+    @PutMapping("/{id}")
+    public BookDto saveOrUpdate(@Valid @RequestBody BookDto bookDto, @PathVariable Long id) {
+        return modelMapper.map(bookRepository.findById(id)
+                .map(book -> {
+                    book.setBookName(bookDto.getBookName());
+                    book.setAuthor(bookDto.getAuthor());
+                    book.setPrice(bookDto.getPrice());
+                    return bookRepository.save(book);
+                })
+                .orElseGet(() -> {
+                    Book book = modelMapper.map(bookDto, Book.class);
+                    book.setId(id);
+                    return bookRepository.save(book);
+                }), BookDto.class);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable Long id) {
+        bookRepository.deleteById(id);
     }
 }
