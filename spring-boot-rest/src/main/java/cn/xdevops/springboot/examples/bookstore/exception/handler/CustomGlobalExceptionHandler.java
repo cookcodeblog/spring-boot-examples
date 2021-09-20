@@ -1,6 +1,7 @@
 package cn.xdevops.springboot.examples.bookstore.exception.handler;
 
 import cn.xdevops.springboot.examples.bookstore.exception.ResourceNotFoundException;
+import cn.xdevops.springboot.examples.bookstore.exception.ServiceException;
 import cn.xdevops.springboot.examples.bookstore.exception.response.ApiError;
 import cn.xdevops.springboot.examples.bookstore.exception.response.ApiSubError;
 import org.springframework.http.HttpHeaders;
@@ -18,11 +19,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
-public class CustomerGlobalExceptionHandler extends ResponseEntityExceptionHandler {
+public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     // don't handle default RuntimeException and Exception
     // Example:
     // - "Request Method 'PUT' not supported
+
+    @ExceptionHandler(ServiceException.class)
+    public ResponseEntity<ApiError> handleServiceException(Exception ex, WebRequest request) {
+        return handleApiError(ex, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
     /**
      * Customize HTTP status code as NOT_Found for ResourceNotFoundException
