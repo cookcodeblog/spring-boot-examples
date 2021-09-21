@@ -35,6 +35,15 @@ Example:
 - spring-boot-rest/configuration/SwaggerConfig
 
 
+### WebClient - RestTemplate
+
+Example:
+- spring-boot-rest/RestTemplateTest
+
+### WebClient - WebFlux
+
+Example:
+- spring-boot-rest/WebFluxClientTest
 
 
 ## Graceful shutdown
