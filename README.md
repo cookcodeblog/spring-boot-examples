@@ -19,18 +19,32 @@ Example:
 ### Convert DTO to entity
 
 Example:
-- spring-boot-rest/payroll/DtoConvertEmployeeController
+- spring-boot-rest/payroll/DtoConvertEmployeeController (ModelMapper example)
+- spring-boot-rest/payroll/MapStructDtoConvertEmployeeController (ModelMapper example)
 
-### Spring Boot Error Hanlding
+### Spring Boot Error Handling
 
 Example:
 - spring-boot-rest/bookstore
+
+
+
+### Set up Swagger2 for REST API
+
+Example:
+- spring-boot-rest/configuration/SwaggerConfig
+
+
 
 
 ## Graceful shutdown
 
 Example:
 - spring-boot-rest/application.yaml
+
+
+
+
 
 
 

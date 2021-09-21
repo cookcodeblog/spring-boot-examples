@@ -13,10 +13,12 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class BookDto {
     private Long id;
-    @NotBlank(message = "Book name is mandatory")
+    @NotNull(message = "Book name can not be null")
+    @NotBlank(message = "Book name can not be blank")
     private String bookName;
-    @NotBlank(message = "Author is mandatory")
+    @NotNull(message = "Author can not be null")
+    @NotBlank(message = "Author can not be blank")
     private String author;
-    @NotNull(message = "Price is mandatory")
+    @NotNull(message = "Price can not be null")
     private BigDecimal price;
 }

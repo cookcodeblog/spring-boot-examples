@@ -1,11 +1,11 @@
-package cn.xdevops.springboot.examples;
+package cn.xdevops.springboot.examples.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ModelMapperConfiguration {
+public class ModelMapperConfig {
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
