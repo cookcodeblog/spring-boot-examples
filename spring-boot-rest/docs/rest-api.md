@@ -21,6 +21,13 @@ Server error:
 - HTTP503 Service Unavailable
 
 
+## Rest API Clients
+
+- Spring RestTemplate superceded by Spring WebClient
+
+- <https://stackoverflow.com/questions/221442/how-do-you-create-a-rest-client-for-java>
+
+
 ## References
 
 - [REST with Spring Tutorial](https://www.baeldung.com/rest-with-spring-series)

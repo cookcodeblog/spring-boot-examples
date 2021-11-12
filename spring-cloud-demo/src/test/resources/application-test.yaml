@@ -1,0 +1,4 @@
+
+client:
+  post:
+    baseUrl: http://localhost:9091
