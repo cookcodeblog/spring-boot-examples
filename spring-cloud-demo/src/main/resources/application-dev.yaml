@@ -10,4 +10,4 @@ feign:
     enabled: true
 client:
   post:
-    baseUrl: http://localhost:3001/
+    baseUrl: https://jsonplaceholder.typicode.com/
