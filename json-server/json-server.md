@@ -6,9 +6,7 @@ https://github.com/typicode/json-server
 npm install -g json-server
 
 # restore the data
-cp db-bak.json db.json
-
-json-server --watch db.json --port 3001
+cp db-bak.json db.json && json-server --watch db.json --port 3001
 ```
 
 Home:

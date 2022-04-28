@@ -1,0 +1,13 @@
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+  okhttp:
+    enabled: true
+client:
+  post:
+    baseUrl: http://localhost:3001/
